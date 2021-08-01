@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../layouts/head') %> 
+    <title>Пошук</title>
+</head>
+<body style="margin: 1em;">
+    <form method="POST">
+        <div class="input-group mb-3">
+          <label for="nameInput" class="input-group-text">Назва</label>
+          <input type="text" class="form-control" name="name">
+        </div>
+
+        <div class="input-group mb-3">
+          <label class="input-group-text">Товарний код</label>
+          <input type="text" class="form-control" name="id">
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Ціна</span>
+            <span class="input-group-text">мін.</span>
+            <input type="text" class="form-control" name="price_min">
+            <input type="text" class="form-control" name="price_max">
+            <span class="input-group-text">макс.</span>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="onlyStockInput" name="only_in_stock">
+          <label class="form-check-label" for="onlyStockInput">Тільки в наявності</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Пошук</button>
+      </form>
+</body>
+</html>

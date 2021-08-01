@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../layouts/head') %> 
+    <title><%= product.name %></title>
+    <script language="javascript" src="../js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+</head>
+<body style="margin: 1em;">
+    <a href="javascript:history.back()" class="btn btn-secondary" style="width: 100%;">
+        Повернутись назад
+    </a>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Парам.</th>
+                    <th scope="col">Значення</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Код</td>
+                    <td><%= product.code %></td>
+                </tr>
+                <tr>
+                    <td>Назва</td>
+                    <td><%= product.name %></td>
+                </tr>
+                <tr>
+                    <td>К-сть</td>
+                    <td>
+                        <% if (product.qty > 0) { %>
+                            <%= product.qty + ' ' + product.measurement %>
+                        <% } else { %>
+                            ✖️
+                        <% } %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Роздр. ціна</td>
+                    <td><%= product.retail_price %></td>
+                </tr>
+                <tr>
+                    <td>Малий опт</td>
+                    <td>
+                        <% if (product.small_wholesale_price) { %>
+                            <%= product.small_wholesale_price %>
+                        <% } else { %>
+                            ✖️
+                        <% } %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Оптова ціна</td>
+                    <td>
+                        <% if (product.wholesale_price) { %>
+                            <%= product.wholesale_price %>
+                        <% } else { %>
+                            ✖️
+                        <% } %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/search" class="btn btn-secondary" style="width: 100%;">
+        До вікна пошуку
+    </a>
+</body>
+</html>
