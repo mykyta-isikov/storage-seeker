@@ -1,8 +1,8 @@
-const passport = require('passport')
+const passport = require('passport');
 
-module.exports = passport.authenticate('local', { 
+module.exports = passport.authenticate('local', {
     session: true,
     successRedirect: '/',
     failureRedirect: '/login',
-    failureFlash: true
-})
+    failureFlash: true,
+});

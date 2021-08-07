@@ -10,10 +10,9 @@ module.exports = async (req, res) => {
     await client
         .query(queryString)
         .then(res.redirect('/admin'))
-        .catch(err => {
+        .catch((err) => {
             console.log(err);
             res.redirect('/admin');
         });
-    await client.end()
-    
-}
+    await client.end();
+};

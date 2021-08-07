@@ -17,15 +17,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(flash());
-app.use(session({ 
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: false,
-}));
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: true,
+        saveUninitialized: false,
+    }),
+);
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 // Controllers
 const homeController = require('./controllers/home');
@@ -58,9 +58,6 @@ app.get('/admin', checkAuthAdmin, adminController);
 app.post('/admin/approve', checkAuthAdmin, adminApproveController);
 app.post('/admin/hold', checkAuthAdmin, adminHoldController);
 app.post('/admin/delete', checkAuthAdmin, adminDeleteController);
-
-
-
 
 app.use((req, res) => {
     res.status(404).render('pages/404');

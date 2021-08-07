@@ -11,16 +11,14 @@ module.exports = async (req, res) => {
     await client.connect();
     await client
         .query(queryString)
-        .then(queryResult => {
+        .then((queryResult) => {
             res.render('pages/admin', {
                 users: queryResult.rows,
-            })
+            });
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(err);
             res.redirect('/');
         });
-    await client.end()
-    
-    
-}
+    await client.end();
+};

@@ -1,17 +1,15 @@
 const { Client } = require('pg');
 const dbClientConfig = require('../config/db-client');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 module.exports = async (req, res) => {
     const client = new Client(dbClientConfig);
     await client.connect();
 
-
     if (await checkUniqueEmail(req.body.email)) {
-
-        if(req.body.password !== req.body.repeat_password) {
-            console.log('Passwords don\'t match')
-            res.redirect('/register')
+        if (req.body.password !== req.body.repeat_password) {
+            console.log("Passwords don't match");
+            res.redirect('/register');
             return;
         }
 
@@ -25,34 +23,33 @@ module.exports = async (req, res) => {
             \'${req.body.first_name}\', 
             \'${hashedPassword}\', 
             1
-        )`
-        console.log(queryString)
+        )`;
+        console.log(queryString);
 
         await client
             .query(queryString)
-            .then(queryResult => {
+            .then((queryResult) => {
                 console.log(queryResult);
                 res.redirect('/login');
             })
-            .catch(err => console.log(err));
-
+            .catch((err) => console.log(err));
     } else {
-        res.redirect('/register')
+        res.redirect('/register');
     }
 
     async function checkUniqueEmail(email) {
         let output = false;
         await client
             .query(`SELECT email FROM users WHERE email='${email}'`)
-            .then(queryResult => {
+            .then((queryResult) => {
                 if (queryResult.rows[0]) {
                     console.log('User with this email already exists');
                 } else {
                     output = true;
                 }
             })
-            .catch(err => console.log(err));
+            .catch((err) => console.log(err));
 
         return output;
     }
-}
+};
