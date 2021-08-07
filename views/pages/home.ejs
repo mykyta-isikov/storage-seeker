@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../layouts/head') %> 
+    <title>Storage-seeker</title>
+</head>
+<body style="margin: 1em;">
+    <h3>Вітаємо у Storage-seeker!</h3>
+    <% if (userStatus === 0) { %>
+        <a href="/login" class="btn btn-primary">
+            Увійти
+        </a>
+        <a href="/register" class="btn btn-secondary">
+            Зареєструватись
+        </a>
+    <% } %>
+    <% if (userStatus > 0) { %>
+        <h3>Вітаємо, <%= userFirstName %>!</h3>
+    <% } %>
+    <% if (userStatus === 1) { %>
+        <p>Ваша заявка на реєстрацію ще в обробці. Очікуйте, поки менеджер не підтвердить ваш статус</p>
+    <% } %>
+    <% if (userStatus === 3) { %>
+        <a href="/admin" class="btn btn-info">
+            Керування профілями працівників
+        </a>
+    <% } %>
+    <% if (userStatus > 1) { %>
+        <a href="/search" class="btn btn-primary">
+            До пошуку
+        </a>
+    <% } %>
+    <% if (userStatus > 0) { %>
+        <br>
+        <a href="/logout" class="btn btn-danger">
+            Вийти
+        </a>
+    <% } %>
+</body>
+</html>

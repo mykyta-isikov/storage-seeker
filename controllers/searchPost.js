@@ -103,7 +103,7 @@ module.exports = async (req, res) => {
             if (err) console.log(err);
             if (!err) {
                 if (queryResult.rows.length === 1) {
-                    res.redirect('/product/' + queryResult.rows[0].code);
+                    res.redirect('/product?code=' + queryResult.rows[0].code);
                 } else if (queryResult.rows.length === 0) {
                     res.redirect('/notfound');
                 } else {
