@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
             await client
                 .query(queryString)
                 .then((queryResult) => {
-                    res.redirect('/login');
+                    res.redirect('/user/login');
                 })
                 .catch((err) => console.log(err));
         } else {
@@ -39,12 +39,12 @@ module.exports = async (req, res) => {
                 'error',
                 'Користувач з цією ел. поштою вже зареєстрований',
             );
-            res.redirect('/register');
+            res.redirect('/user/register');
         }
     } catch (err) {
         req.flash('error', err.message);
         console.log(err.message);
-        res.redirect('/register');
+        res.redirect('/user/register');
     }
 
     async function checkUniqueEmail(email) {

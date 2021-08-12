@@ -10,11 +10,11 @@
     <% } %>
     <% if (userStatus === 0) { %>
         <h3 style="text-align: center;">Вітаємо у Storage-seeker!</h3>
-        <a href="/login" class="btn btn-primary" style="width: 100%;">
+        <a href="/user/login" class="btn btn-primary" style="width: 100%;">
             Увійти
         </a>
         <p></p>
-        <a href="/register" class="btn btn-secondary" style="width: 100%;">
+        <a href="/user/register" class="btn btn-secondary" style="width: 100%;">
             Зареєструватись
         </a>
     <% } %>
@@ -35,7 +35,7 @@
     <% } %>
     <% if (userStatus > 0) { %>
         <p style="height: 0.5em;"></p>
-        <a href="/logout" class="btn btn-danger" style="width: 100%;">
+        <a href="/user/logout" class="btn btn-danger" style="width: 100%;">
             Вийти
         </a>
     <% } %>
