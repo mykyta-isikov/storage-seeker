@@ -7,7 +7,7 @@
 <body style="margin: 1em;">
     <form method="POST">
         <% if (messages.error) { %> 
-            <p><%= messages.error %></p> 
+            <div class="alert alert-warning"><%= messages.error %></div> 
         <% } %>
         <div class="input-group mb-3">
           <label for="nameInput" class="input-group-text">E-mail</label>

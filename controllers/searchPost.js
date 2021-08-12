@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 const dbClientConfig = require('../config/db-client');
-const JoiSchema = require('../config/joi');
+const JoiSchema = require('../config/joi/search');
 
 module.exports = async (req, res) => {
     try {

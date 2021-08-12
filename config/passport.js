@@ -19,13 +19,12 @@ module.exports = (passport) => {
                     if (err) {
                         console.log(err);
                         return done(null, false, {
-                            message: 'Database error',
+                            message: 'Помилка у базі даних',
                         });
                     } else {
                         // Does the user exist in DB?
                         if (queryResult.rows[0]) {
                             const user = queryResult.rows[0];
-                            console.log(user);
 
                             // Do the passwords match?
                             bcrypt.compare(
@@ -37,7 +36,7 @@ module.exports = (passport) => {
                                         return done(null, user);
                                     } else {
                                         return done(null, false, {
-                                            message: 'Password is incorrect',
+                                            message: 'Пароль хибний',
                                         });
                                     }
                                 },
@@ -45,7 +44,7 @@ module.exports = (passport) => {
                         } else {
                             return done(null, false, {
                                 message:
-                                    'Such e-mail has not been registered yet',
+                                    'Відповідна ел. пошта не зареєстрована',
                             });
                         }
                     }

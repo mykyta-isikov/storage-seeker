@@ -25,7 +25,7 @@
         }
     </style>
 </head>
-<body style="margin: 1em;">
+<body>
     <div>
         <table class="table">
             <thead>
@@ -58,14 +58,14 @@
                             <% } %> 
                             <form style="display: inline;" action="/admin/delete?id=<%= user.id %>" method="POST">
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal<%= user.id %>">🗑️</button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Modal<%= user.id %>">🗑️</button>
                                 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal<%= user.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="Modal<%= user.id %>" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Увага!</h5>
+                                            <h5 class="modal-title" id="ModalLabel">Увага!</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">

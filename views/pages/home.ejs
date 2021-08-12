@@ -5,34 +5,37 @@
     <title>Storage-seeker</title>
 </head>
 <body style="margin: 1em;">
-    <h3>Вітаємо у Storage-seeker!</h3>
-    <% if (userStatus === 0) { %>
-        <a href="/login" class="btn btn-primary">
-            Увійти
-        </a>
-        <a href="/register" class="btn btn-secondary">
-            Зареєструватись
-        </a>
-    <% } %>
     <% if (userStatus > 0) { %>
         <h3>Вітаємо, <%= userFirstName %>!</h3>
+    <% } %>
+    <% if (userStatus === 0) { %>
+        <h3 style="text-align: center;">Вітаємо у Storage-seeker!</h3>
+        <a href="/login" class="btn btn-primary" style="width: 100%;">
+            Увійти
+        </a>
+        <p></p>
+        <a href="/register" class="btn btn-secondary" style="width: 100%;">
+            Зареєструватись
+        </a>
     <% } %>
     <% if (userStatus === 1) { %>
         <p>Ваша заявка на реєстрацію ще в обробці. Очікуйте, поки менеджер не підтвердить ваш статус</p>
     <% } %>
     <% if (userStatus === 3) { %>
-        <a href="/admin" class="btn btn-info">
+        <a href="/admin" class="btn btn-info" style="width: 100%;">
             Керування профілями працівників
         </a>
+        <p></p>
     <% } %>
     <% if (userStatus > 1) { %>
-        <a href="/search" class="btn btn-primary">
+        <a href="/search" class="btn btn-primary" style="width: 100%;">
             До пошуку
         </a>
+        <p></p>
     <% } %>
     <% if (userStatus > 0) { %>
-        <br>
-        <a href="/logout" class="btn btn-danger">
+        <p style="height: 0.5em;"></p>
+        <a href="/logout" class="btn btn-danger" style="width: 100%;">
             Вийти
         </a>
     <% } %>

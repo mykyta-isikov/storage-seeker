@@ -16,7 +16,6 @@ require('./config/passport')(passport);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
-app.use(flash());
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
@@ -26,6 +25,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // Controllers
 const homeController = require('./controllers/home');
