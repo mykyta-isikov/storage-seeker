@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../layouts/head') %> 
+    <title>Sign up</title>
+</head>
+<body style="margin: 1em;">
+    <form method="POST">
+        <% if (messages.error) { %> 
+            <div class="alert alert-warning"><%= messages.error %></div> 
+        <% } %>
+        <div class="input-group mb-3">
+          <label for="nameInput" class="input-group-text">E-mail</label>
+          <input type="text" class="form-control" name="email">
+        </div>
+
+        <div class="input-group mb-3">
+          <label class="input-group-text">Last name</label>
+          <input type="text" class="form-control" name="last_name">
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text">First name</label>
+            <input type="text" class="form-control" name="first_name">
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text">Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text">Repeat password</label>
+            <input type="password" class="form-control" name="repeat_password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../layouts/head') %> 
+    <title>Storage-seeker</title>
+</head>
+<body style="margin: 1em;">
+    <div style="display: inline-block; width: 100%;">
+        <% if (userStatus > 0) { %>
+            <h3 style="display: inline-flex;">Вітаємо, <%= userFirstName %>!</h3>
+        <% } %>
+        <% if (userStatus === 0) { %>
+            <h3 style="display: inline-flex;">Вітаємо у Storage-seeker!</h3>
+        <% } %>
+        <div style="display: inline-flex;" class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="languageToggle" onClick="location.href='../en'">
+            <label class="form-check-label" for="languageToggle">🇬🇧</label>
+        </div>
+    </div>
+    <% if (userStatus === 0) { %>
+        <a href="/ua/user/login" class="btn btn-primary" style="width: 100%;">
+            Увійти
+        </a>
+        <p></p>
+        <a href="/ua/user/register" class="btn btn-secondary" style="width: 100%;">
+            Зареєструватись
+        </a>
+    <% } %>
+    <% if (userStatus === 1) { %>
+        <p>Ваша заявка на реєстрацію ще в обробці. Очікуйте, поки менеджер не підтвердить ваш статус</p>
+    <% } %>
+    <% if (userStatus === 3) { %>
+        <a href="/ua/admin" class="btn btn-info" style="width: 100%;">
+            Керування профілями працівників
+        </a>
+        <p></p>
+    <% } %>
+    <% if (userStatus > 1) { %>
+        <a href="/ua/search" class="btn btn-primary" style="width: 100%;">
+            До пошуку
+        </a>
+        <p></p>
+    <% } %>
+    <% if (userStatus > 0) { %>
+        <p style="height: 0.5em;"></p>
+        <a href="/ua/user/logout" class="btn btn-danger" style="width: 100%;">
+            Вийти
+        </a>
+    <% } %>
+</body>
+</html>

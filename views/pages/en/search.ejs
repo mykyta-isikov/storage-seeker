@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../layouts/head') %> 
+    <title>Search</title>
+</head>
+<body style="margin: 1em;">
+    <a href="/en" class="btn btn-secondary" style="width: 100%; margin-bottom: 1em;">
+        To homepage
+    </a>
+    <form method="POST">
+        <div class="input-group mb-3">
+          <label for="nameInput" class="input-group-text">Name</label>
+          <input type="text" class="form-control" name="name">
+        </div>
+
+        <div class="input-group mb-3">
+          <label class="input-group-text">Code</label>
+          <input type="text" class="form-control" name="id">
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Price</span>
+            <span class="input-group-text">min</span>
+            <input type="text" class="form-control" name="price_min">
+            <input type="text" class="form-control" name="price_max">
+            <span class="input-group-text">max</span>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="onlyStockInput" name="only_in_stock">
+          <label class="form-check-label" for="onlyStockInput">Only in stock</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Search</button>
+    </form>
+</body>
+</html>
