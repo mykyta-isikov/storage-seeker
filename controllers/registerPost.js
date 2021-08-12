@@ -14,7 +14,10 @@ module.exports = async (req, res) => {
             const salt = await bcrypt.genSalt(
                 parseInt(process.env.SALT_ROUNDS),
             );
-            const hashedPassword = await bcrypt.hash(req.body.password.trim(), salt);
+            const hashedPassword = await bcrypt.hash(
+                req.body.password.trim(),
+                salt,
+            );
             const queryString = `INSERT INTO users 
             (email, last_name, first_name, password, status) 
             VALUES (

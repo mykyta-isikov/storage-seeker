@@ -26,18 +26,14 @@ module.exports = Joi.object({
         'any.required': `Необхідне ім\'я`,
     }),
 
-    password: Joi.string()
-        .min(6)
-        .max(50)
-        .required()
-        .messages({
-            'string.base': `Пароль хибного формату`,
-            'string.empty': `Необхідний пароль`,
-            'any.pattern': `Хибний формат пароля`,
-            'string.max': `Пароль повинен мати довжину не більше {#limit}`,
-            'string.min': `Пароль повинен мати довжину не менше {#limit}`,
-            'any.required': `Необхідний пароль`,
-        }),
+    password: Joi.string().min(6).max(50).required().messages({
+        'string.base': `Пароль хибного формату`,
+        'string.empty': `Необхідний пароль`,
+        'any.pattern': `Хибний формат пароля`,
+        'string.max': `Пароль повинен мати довжину не більше {#limit}`,
+        'string.min': `Пароль повинен мати довжину не менше {#limit}`,
+        'any.required': `Необхідний пароль`,
+    }),
 
     repeat_password: Joi.ref('password'),
 });
