@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../layouts/head') %> 
+    <title>Вхід</title>
+</head>
+<body style="margin: 1em;">
+    <form method="POST">
+        <% if (messages.error) { %> 
+            <div class="alert alert-warning"><%= messages.error %></div> 
+        <% } %>
+        <div class="input-group mb-3">
+          <label for="nameInput" class="input-group-text">E-mail</label>
+          <input type="text" class="form-control" name="email">
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text">Пароль</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Увійти</button>
+    </form>
+</body>
+</html>

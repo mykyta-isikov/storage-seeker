@@ -1,5 +1,7 @@
 const express = require('express');
-const ejs = require('ejs');
+const passport = require('passport');
+const flash = require('express-flash');
+const session = require('express-session');
 require('dotenv').config();
 
 const app = express();
@@ -7,31 +9,36 @@ const app = express();
 // EJS
 app.set('view engine', 'ejs');
 
-// Middleware
+// Passport config
+require('./config/passport')(passport);
+
+// Settings
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use(express.static(__dirname + '/public'));
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: true,
+        saveUninitialized: false,
+    }),
+);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
-// Controllers
-const homeController = require('./controllers/home');
-const searchController = require('./controllers/search');
-const searchPostController = require('./controllers/searchPost');
-const productController = require('./controllers/product');
-const notfoundController = require('./controllers/notfound');
+// Routers
+const userRouter = require('./routes/userRouter');
+const adminRouter = require('./routes/adminRouter');
+const indexRouter = require('./routes/indexRouter');
 
 // Routes
-app.get('/', homeController);
-app.get('/search', searchController);
-app.post('/search', searchPostController);
-app.get('/product/:id', productController);
-app.get('/notfound', notfoundController);
+app.use('/', indexRouter);
+app.use('/user', userRouter);
+app.use('/admin', adminRouter);
 
-app.use((req, res) => {
-    res.status(404).render('pages/404');
-});
-app.use((err, req, res, next) => {
-    res.status(500).render('pages/500');
-});
+app.use((req, res) => res.status(404).render('pages/404'));
+app.use((err, req, res, next) => res.status(500).render('pages/500'));
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
