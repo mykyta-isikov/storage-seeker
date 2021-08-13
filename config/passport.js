@@ -1,9 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const { Client } = require('pg');
-const dbClientConfig = require('../config/db-client');
-
-// Load User model
+const dbClientConfig = require('./db-client');
 
 module.exports = (passport) => {
     passport.use(
@@ -19,7 +17,7 @@ module.exports = (passport) => {
                     if (err) {
                         console.log(err);
                         return done(null, false, {
-                            message: 'Помилка у базі даних',
+                            message: '1',
                         });
                     } else {
                         // Does the user exist in DB?
@@ -36,15 +34,14 @@ module.exports = (passport) => {
                                         return done(null, user);
                                     } else {
                                         return done(null, false, {
-                                            message: 'Пароль хибний',
+                                            message: '2',
                                         });
                                     }
                                 },
                             );
                         } else {
                             return done(null, false, {
-                                message:
-                                    'Відповідна ел. пошта не зареєстрована',
+                                message: '3',
                             });
                         }
                     }

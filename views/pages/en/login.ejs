@@ -6,8 +6,20 @@
 </head>
 <body style="margin: 1em;">
     <form method="POST">
-        <% if (messages.error) { %> 
-            <div class="alert alert-warning"><%= messages.error %></div> 
+        <%  if (messages.error) {
+            const passportMessage = messages.error[0];
+            let textMessage = '';
+            
+            if (passportMessage === '1') {
+                textMessage = 'Database error';
+            }
+            if (passportMessage === '2') {
+                textMessage = 'Password is incorrect';
+            }
+            if (passportMessage === '3') {
+                textMessage = 'This email has not been registered yet';
+            } %> 
+            <div class="alert alert-warning"><%= textMessage %></div> 
         <% } %>
         <div class="input-group mb-3">
           <label for="nameInput" class="input-group-text">E-mail</label>

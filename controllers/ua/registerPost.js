@@ -1,7 +1,7 @@
 const { Client } = require('pg');
 const dbClientConfig = require('../../config/db-client');
 const bcrypt = require('bcrypt');
-const JoiSchema = require('../../config/joi/register');
+const JoiSchema = require('../../config/joi/register-ua');
 
 module.exports = async (req, res) => {
     try {

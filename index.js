@@ -36,6 +36,7 @@ app.get('/', (req, res) => res.redirect('/ua'));
 app.use('/ua', uaRouter);
 app.use('/en', enRouter);
 
+// Error handlers
 app.use((req, res) => res.status(404).render('pages/en/404'));
 app.use((err, req, res, next) => {
     console.log(err);
