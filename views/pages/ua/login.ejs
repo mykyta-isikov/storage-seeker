@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../layouts/head') %> 
+    <title>Вхід</title>
+</head>
+<body style="margin: 1em;">
+    <form method="POST">
+        <%  if (messages.error) {
+                const passportMessage = messages.error[0];
+                let textMessage = '';
+                
+                if (passportMessage === '1') {
+                    textMessage = 'Помилка бази даних';
+                }
+                if (passportMessage === '2') {
+                    textMessage = 'Пароль хибний';
+                }
+                if (passportMessage === '3') {
+                    textMessage = 'Введена ел. пошта не зареєстрована';
+                } %> 
+            <div class="alert alert-warning"><%= textMessage %></div> 
+        <% } %>
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Ел. пошта</label>
+            <input type="email" class="form-control" id="emailInput" name="email">
+        </div>
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="passwordInput" name="password">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <button style="width: 100%;" type="submit" class="btn btn-primary">Увійти</button>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+

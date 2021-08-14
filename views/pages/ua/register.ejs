@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../layouts/head') %> 
+    <title>Реєстрація</title>
+</head>
+<body style="margin: 1em;">
+    <form method="POST">
+        <% if (messages.error) { %> 
+            <div class="alert alert-warning"><%= messages.error %></div> 
+        <% } %>
+
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Ел. пошта</label>
+            <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" name="email">
+            <div id="emailHelp" class="form-text">Має бути унікальною.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastnameInput" class="form-label">Прізвище</label>
+            <input type="text" class="form-control" id="lastnameInput" name="last_name">
+        </div>      
+
+        <div class="mb-3">
+            <label for="firstnameInput" class="form-label">Ім'я</label>
+            <input type="text" class="form-control" id="firstnameInput" name="first_name">
+        </div>
+
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordHelp" name="password">
+            <div id="passwordHelp" class="form-text">Повинен складатись мінімум з 6 символів.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="repeatPasswordInput" class="form-label">Підтвердіть пароль</label>
+            <input type="password" class="form-control" id="repeatPasswordInput" name="repeat_password">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <button style="width: 100%;" type="submit" class="btn btn-primary">Зареєструватись</button>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+

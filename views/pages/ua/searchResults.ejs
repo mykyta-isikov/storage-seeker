@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../layouts/head') %> 
+    <%- include('../../layouts/head') %> 
     <title>Результат пошуку</title>
     <style>
         .inline-link:link {
@@ -47,7 +47,7 @@
                     <% } %> 
                         <th><%= row.code %></th>
                         <td>
-                            <a class="inline-link" href="product/<%= row.code %>">
+                            <a class="inline-link" href="product?code=<%= row.code %>">
                                 <%= row.name %>
                             </a>
                         </td>

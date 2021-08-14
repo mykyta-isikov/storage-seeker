@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-    res.render('pages/search');
+    res.render('pages/en/login');
 };

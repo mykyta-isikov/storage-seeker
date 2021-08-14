@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../layouts/head') %> 
+    <%- include('../../layouts/head') %> 
     <title>Пошук</title>
 </head>
 <body style="margin: 1em;">
+    <a href="/ua" class="btn btn-secondary" style="width: 100%; margin-bottom: 1em;">
+        На головну
+    </a>
     <form method="POST">
         <div class="input-group mb-3">
           <label for="nameInput" class="input-group-text">Назва</label>
@@ -29,7 +32,7 @@
           <label class="form-check-label" for="onlyStockInput">Тільки в наявності</label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Пошук</button>
-      </form>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Пошук</button>
+    </form>
 </body>
 </html>
