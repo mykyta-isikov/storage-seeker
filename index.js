@@ -28,17 +28,20 @@ app.use(passport.session());
 app.use(flash());
 
 // Routers
-const userRouter = require('./routes/userRouter');
-const adminRouter = require('./routes/adminRouter');
-const indexRouter = require('./routes/indexRouter');
+const uaRouter = require('./routes/uaRouter');
+const enRouter = require('./routes/enRouter');
 
 // Routes
-app.use('/', indexRouter);
-app.use('/user', userRouter);
-app.use('/admin', adminRouter);
+app.get('/', (req, res) => res.redirect('/en'));
+app.use('/ua', uaRouter);
+app.use('/en', enRouter);
 
-app.use((req, res) => res.status(404).render('pages/404'));
-app.use((err, req, res, next) => res.status(500).render('pages/500'));
+// Error handlers
+app.use((req, res) => res.status(404).render('pages/en/404'));
+app.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500).render('pages/en/500');
+});
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../layouts/head') %> 
+    <title><%= product.name %></title>
+</head>
+<body style="margin: 1em;">
+    <a href="javascript:history.back()" class="btn btn-secondary" style="width: 100%;">
+        Go back
+    </a>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Code</td>
+                    <td><%= product.code %></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><%= product.name %></td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td>
+                        <% if (product.qty > 0) { %>
+                            <%= product.qty + ' ' + product.measurement %>
+                        <% } else { %>
+                            ✖️
+                        <% } %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Retail price</td>
+                    <td><%= product.retail_price %></td>
+                </tr>
+                <tr>
+                    <td>Small wholesale price</td>
+                    <td>
+                        <% if (product.small_wholesale_price) { %>
+                            <%= product.small_wholesale_price %>
+                        <% } else { %>
+                            ✖️
+                        <% } %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Wholesale price</td>
+                    <td>
+                        <% if (product.wholesale_price) { %>
+                            <%= product.wholesale_price %>
+                        <% } else { %>
+                            ✖️
+                        <% } %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/en/search" class="btn btn-secondary" style="width: 100%;">
+        Back to search
+    </a>
+</body>
+</html>
