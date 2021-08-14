@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
             const client = new Client(dbClientConfig);
             await client.connect();
 
-            if (await checkUniqueEmail(req.body.email)) {
+            if (await checkUniqueEmail(client, req.body.email)) {
                 const salt = await bcrypt.genSalt(
                     parseInt(process.env.SALT_ROUNDS),
                 );
@@ -42,6 +42,8 @@ module.exports = async (req, res) => {
                 req.flash('error', 'This email is already signed up');
                 res.redirect('/en/user/register');
             }
+
+            client.end();
         }
     } catch (err) {
         req.flash('error', err.message);
@@ -49,10 +51,7 @@ module.exports = async (req, res) => {
         res.redirect('/en/user/register');
     }
 
-    async function checkUniqueEmail(email) {
-        const client = new Client(dbClientConfig);
-        await client.connect();
-
+    async function checkUniqueEmail(client, email) {
         let output = false;
         await client
             .query(`SELECT email FROM users WHERE email='${email}'`)
