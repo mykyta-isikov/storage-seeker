@@ -32,7 +32,7 @@ const uaRouter = require('./routes/uaRouter');
 const enRouter = require('./routes/enRouter');
 
 // Routes
-app.get('/', (req, res) => res.redirect('/ua'));
+app.get('/', (req, res) => res.redirect('/en'));
 app.use('/ua', uaRouter);
 app.use('/en', enRouter);
 

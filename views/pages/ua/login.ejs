@@ -21,17 +21,24 @@
                 } %> 
             <div class="alert alert-warning"><%= textMessage %></div> 
         <% } %>
-        <div class="input-group mb-3">
-            <label for="nameInput" class="input-group-text">E-mail</label>
-            <input type="text" class="form-control" name="email">
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Ел. пошта</label>
+            <input type="email" class="form-control" id="emailInput" name="email">
         </div>
-
-        <div class="input-group mb-3">
-            <label class="input-group-text">Пароль</label>
-            <input type="password" class="form-control" name="password">
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="passwordInput" name="password">
         </div>
-
-        <button type="submit" class="btn btn-primary">Увійти</button>
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <button style="width: 100%;" type="submit" class="btn btn-primary">Увійти</button>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
     </form>
 </body>
 </html>
+

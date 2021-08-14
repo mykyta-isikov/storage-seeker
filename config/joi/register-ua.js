@@ -35,5 +35,5 @@ module.exports = Joi.object({
         'any.required': `Необхідний пароль`,
     }),
 
-    repeat_password: Joi.ref('password'),
+    repeat_password: Joi.any(),
 });
